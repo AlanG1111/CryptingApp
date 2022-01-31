@@ -1,0 +1,7 @@
+.background {
+    background: rgb(195,34,34);
+    background: linear-gradient(18deg, rgba(195,34,34,1) 0%, rgba(94,253,45,1) 100%);
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+}
