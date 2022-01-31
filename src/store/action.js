@@ -10,7 +10,6 @@ export const addData = (data) => {
     }
 }
 
-
 export const changeData = (id,inputValue) => {
     return {
         type: CHANGE_DATA,
@@ -28,16 +27,7 @@ export const hideInputWithoutChanging = (id,inputValue) => {
 }
 
 export function fetchData() {
-    console.log("fetched")
     return {
         type: REQUESTS_DATA
     }
-
-//     return dispatch => {
-//         console.log(dispatch)
-//         dispatch(addData(exchanges.exchanges)) 
-// }
 }
-
-
-

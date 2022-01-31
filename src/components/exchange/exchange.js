@@ -6,15 +6,13 @@ import './exchange.css'
 const Exchange = () => {
     const dispatch = useDispatch()
     const data = useSelector(state => state.data)
-
     const [inputValue, setInputValue] = useState("")
 
     useEffect(() => {
         dispatch(fetchData())
     }, [])
-    
 
-    const toggleInput = (id ) => {
+    const toggleInput = (id) => {
         const el = document.getElementById(id);
         if (el.style.display === "block") {
             el.style.display = "none";
@@ -28,17 +26,14 @@ const Exchange = () => {
         toggleInput(id)
     }
 
-
     const saveInput = (id) => {
         dispatch(changeData(id,inputValue))
         toggleInput(id)
     }
 
-
     return (
         <>
             {data?.map((obj) => {
-                // console.log("obj", obj)
               return  ( 
                 <div className='exchange' key={obj.id}>
                     <ul>
@@ -59,6 +54,5 @@ const Exchange = () => {
         </>
     )
 }
-
 
 export default Exchange;

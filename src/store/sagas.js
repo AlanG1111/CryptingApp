@@ -1,5 +1,6 @@
-import {default as exchanges} from '../exchanges.json'
 import { takeEvery, put, call} from 'redux-saga/effects'
+
+import { default as exchanges } from '../exchanges.json'
 import { REQUESTS_DATA, addData } from './action'
 
 export function* sagaWatcher() {
@@ -7,7 +8,7 @@ export function* sagaWatcher() {
 }   
 
 function* sagaWorker() {
-    try{
+    try {
         const payload = yield call(fetchData)
         yield put(addData(payload))
     } catch (e) {
