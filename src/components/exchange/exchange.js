@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addData, changeData, hideInputWithoutChanging} from '../../store/action';
-import {default as exchanges} from '../../exchanges.json'
+import { fetchData, changeData, hideInputWithoutChanging} from '../../store/action';
 import './exchange.css'
 
 const Exchange = () => {
@@ -9,10 +8,11 @@ const Exchange = () => {
     const data = useSelector(state => state.data)
 
     const [inputValue, setInputValue] = useState("")
-    
+
     useEffect(() => {
-        dispatch(addData(exchanges.exchanges))
-    }, [])  
+        dispatch(fetchData())
+    }, [])
+    
 
     const toggleInput = (id ) => {
         const el = document.getElementById(id);

@@ -1,6 +1,7 @@
 const ADD_DATA = 'ADD_DATA'
 const CHANGE_DATA = 'CHANGE_DATA'
 const HIDE_INPUT = 'HIDE_INPUT'
+export const REQUESTS_DATA = 'REQUESTS_DATA'
 
 export const addData = (data) => {
     return {
@@ -24,6 +25,18 @@ export const hideInputWithoutChanging = (id,inputValue) => {
         id,
         exchange_id: inputValue
     }
+}
+
+export function fetchData() {
+    console.log("fetched")
+    return {
+        type: REQUESTS_DATA
+    }
+
+//     return dispatch => {
+//         console.log(dispatch)
+//         dispatch(addData(exchanges.exchanges)) 
+// }
 }
 
 
