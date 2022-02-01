@@ -43,9 +43,8 @@ export const changeDataReducer = (state: InitialStateType = initialState, action
             data: [
                 ...previousData
             ]           
-        } 
-
-    }
+        }
+    }   return state
 }
 
 export const hideInputReducer = (state: InitialStateType = initialState, action: HideInputActionType): InitialStateType => {
@@ -57,8 +56,8 @@ export const hideInputReducer = (state: InitialStateType = initialState, action:
                     ...state.data
                 ]
             }
-        } return state
-    }
+        } 
+    }   return state
 }
 
 

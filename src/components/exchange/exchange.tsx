@@ -10,6 +10,8 @@ const Exchange: React.FC = () => {
     const data: any = useSelector<InitialStateType>((state: InitialStateType) => state.data)
     const [inputValue, setInputValue] = useState<string>("")
 
+    console.log("data", data)
+
     useEffect(() => {
         dispatch(fetchData())
     }, [])
