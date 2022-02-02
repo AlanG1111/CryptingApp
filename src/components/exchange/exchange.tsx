@@ -7,7 +7,7 @@ import './exchange.css'
 
 const Exchange: React.FC = () => {
     const dispatch = useDispatch()
-    const data: any = useSelector<InitialStateType>((state: InitialStateType) => state.data)
+    const data: IData | unknown | any = useSelector<InitialStateType>((state: InitialStateType) => state.data)
     const [inputValue, setInputValue] = useState<string>("")
 
     console.log("data", data)
@@ -42,24 +42,25 @@ const Exchange: React.FC = () => {
 
     return (
         <>
-            {data?.map((obj: IData) => {
-              return  ( 
-                <div className='exchange' key={obj.id}>
-                    <ul>
-                        <li className='exchange-id' onClick={() => toggleInput(obj.id)}>
-                                <span>{obj.exchange_id}</span></li>
-                        <div id={`${obj.id}`} className='hidden'>
-                            <input type='text' defaultValue={obj.exchange_id}  onChange={(e) => {
-                                setInputValue(e.target.value) }}/>
-                            <button onClick={() => saveInput(obj.id)}>Save</button>
-                            <button onClick={() => hideInput(obj.id)}>Close</button>
-                        </div>
-                        <li><span>{obj.name}</span></li>
-                        <li><span>{obj.website}</span></li>
-                        <li><span>{obj.volume_24h}</span></li>
-                    </ul> 
-                </div>)
-            })
+            {typeof data !== null ? data?.map((obj: IData) => {
+                return  ( 
+                    <div className='exchange' key={obj.id}>
+                        <ul>
+                            <li className='exchange-id' onClick={() => toggleInput(obj.id)}>
+                                    <span>{obj.exchange_id}</span></li>
+                            <div id={`${obj.id}`} className='hidden'>
+                                <input type='text' defaultValue={obj.exchange_id}  onChange={(e) => {
+                                    setInputValue(e.target.value) }}/>
+                                <button onClick={() => saveInput(obj.id)}>Save</button>
+                                <button onClick={() => hideInput(obj.id)}>Close</button>
+                            </div>
+                            <li><span>{obj.name}</span></li>
+                            <li><span>{obj.website}</span></li>
+                            <li><span>{obj.volume_24h}</span></li>
+                        </ul> 
+                    </div>)
+                })
+                : null
             }
         </>
     )
