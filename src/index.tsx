@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga'
@@ -11,6 +10,8 @@ import { sagaWatcher } from './store/sagas';
 
 const saga = createSagaMiddleware()
 const store = createStore(dataReducer, applyMiddleware(thunk, saga))
+
+export type RootState = ReturnType<typeof store.getState>
 
 saga.run(sagaWatcher)
 

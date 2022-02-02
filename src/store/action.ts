@@ -7,7 +7,7 @@ export const REQUESTS_DATA: string = 'REQUESTS_DATA'
 
 export interface AddDataActionType  {
     type: typeof ADD_DATA,
-    payload: IData[]
+    payload: Array<IData>
 }
 
 export interface ChangeDataActionType {
@@ -26,7 +26,7 @@ export interface FetchDataActionType {
     type: typeof REQUESTS_DATA
 }
 
-export const addData = (data: IData[]): AddDataActionType => {
+export const addData = (data: Array<IData>): AddDataActionType => {
     return {
         type: ADD_DATA,
         payload: data

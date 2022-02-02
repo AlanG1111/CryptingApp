@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../..';
 import { fetchData, changeData, hideInputWithoutChanging} from '../../store/action';
-import { IData, InitialStateType } from '../../store/reducer';
+import { IData } from '../../store/reducer';
 import './exchange.css'
 
 
 const Exchange: React.FC = () => {
     const dispatch = useDispatch()
-    const data: IData | unknown | any = useSelector<InitialStateType>((state: InitialStateType) => state.data)
+    const data: Array<IData> | null = useSelector((state: RootState) => state.data)
     const [inputValue, setInputValue] = useState<string>("")
-
-    console.log("data", data)
 
     useEffect(() => {
         dispatch(fetchData())
@@ -42,7 +41,7 @@ const Exchange: React.FC = () => {
 
     return (
         <>
-            {typeof data !== null ? data?.map((obj: IData) => {
+            {data?.map((obj: IData) => {
                 return  ( 
                     <div className='exchange' key={obj.id}>
                         <ul>
@@ -60,7 +59,7 @@ const Exchange: React.FC = () => {
                         </ul> 
                     </div>)
                 })
-                : null
+                
             }
         </>
     )

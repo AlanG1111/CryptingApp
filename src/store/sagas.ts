@@ -10,7 +10,7 @@ export function* sagaWatcher() {
 
 function* sagaWorker() {
     try {
-        const payload: IData[] = yield call(fetchData)
+        const payload: Array<IData> = yield call(fetchData)
         yield put(addData(payload))
     } catch (e) {
         throw new Error(`${e}`)
